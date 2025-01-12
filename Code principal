@@ -1,6 +1,12 @@
+
 # Charger les bibliothèques nécessaires
+install.packages("blastula")
+install.packages("keyring")
+library(blastula)
+library (keyring)
 library(rvest)
 library(dplyr)
+
 
 # Liste des URL de recherche
 urls <- c(
@@ -63,3 +69,25 @@ final_data <- final_data %>%
 
 # Afficher les résultats filtrés
 print(final_data)
+
+
+# Créer un message avec les liens des chaussures
+email_body <- paste(
+  "Projet Monsieur Pelletier: donner une deuxième vie aux chaussures de course à pied  :\n\n",
+  paste(final_data$Name, " - Prix: ", final_data$Price, " - Lien: ", final_data$Link, collapse = "\n"),
+  sep = ""
+)
+
+# Créer l'email
+email <- compose_email(
+  body = md(email_body)
+)
+
+# Envoyer l'email avec les liens
+smtp_send(
+  email = email,
+  from = "bricekubler@gmail.com",            # Remplacez par votre adresse Gmail
+  to = "emilienhartmann@gmail.com",            # Adresse du destinataire
+  subject = "POROJET MPE1 DATA ANALYSIS: Chaussures de course trouvées sur ebay",
+  credentials = creds_key("gmail_correct")          # Utilisez la clé SMTP que vous avez créée
+)
