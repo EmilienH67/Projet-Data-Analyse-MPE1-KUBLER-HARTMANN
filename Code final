@@ -34,9 +34,9 @@ extract_filtered_data <- function(url) {
     html_attr("href")
   
   # Filtrer pour exclure les résultats non pertinents
-  valid_names <- names[!grepl("Shop on eBay", names)]  # Exclure "Shop on eBay"
-  valid_prices <- prices[!grepl("Shop on eBay", names)]  # Assurer que les prix sont cohérents
-  valid_links <- links[!grepl("Shop on eBay", names)]  # Assurer que les liens sont cohérents
+  valid_names <- names[!grepl("Shop on eBay", names)]  
+  valid_prices <- prices[!grepl("Shop on eBay", names)] 
+  valid_links <- links[!grepl("Shop on eBay", names)]  
   
   # Créer le data frame avec les résultats filtrés
   result <- data.frame(
@@ -101,9 +101,9 @@ email <- compose_email(
 # Envoyer l'email avec les liens
 smtp_send(
   email = email,
-  from = "bricekubler@gmail.com",            # Remplacez par votre adresse Gmail
-  to = "emilienhartmann@gmail.com",            # Adresse du destinataire
+  from = "bricekubler@gmail.com",            
+  to = "emilienhartmann@gmail.com",          
   subject = "POROJET MPE1 DATA ANALYSIS: Chaussures de course trouvées sur ebay",
-  credentials = creds_key("gmail_correct")          # Utilisez la clé SMTP que vous avez créée
+  credentials = creds_key("gmail_correct")        
 )
 
