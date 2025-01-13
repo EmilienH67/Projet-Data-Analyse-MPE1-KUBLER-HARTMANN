@@ -5,7 +5,6 @@ date: "28-12-2024"
 output:
   beamer_presentation: default
   powerpoint_presentation:
-    reference_doc: /Users/derking/Desktop/UniStra/M1/Econométrie_belge/Presentation2.potx
 ---
 
 ## I. Contextualisation
