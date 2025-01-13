@@ -33,3 +33,28 @@ C'est dans ce contexte que s'inscrit notre projet de ce cours. Nous avons constr
 -   **`dplyr`** : Indispensable pour manipuler, nettoyer et transformer les données sous forme de tableaux.
 -   **`cronR`** : Permet de planifier l'exécution de scripts R à des intervalles spécifiques (quotidien, horaire, hebdomadaire, etc.) sans quitter l'environnement R.
 
+
+##III. Utilisation
+
+Exécution du script R : Vous pouvez exécuter le script directement depuis RStudio ou en ligne de commande pour démarrer l'extraction des données. Le script se charge de tout : il va extraire les annonces de chaussures de sport sur eBay, les filtrer selon les critères définis, puis envoyer un email à l'adresse spécifiée.
+
+Personnalisation des paramètres :
+
+Changez l'URL dans la liste des URLs pour explorer d'autres pages eBay.
+Mettez à jour la configuration SMTP dans le fichier pour personnaliser les paramètres d'email (comme votre adresse Gmail).
+Exécution automatique : Vous pouvez programmer le script pour s'exécuter régulièrement en utilisant un planificateur de tâches sur votre système (par exemple, cron sur Linux ou Task Scheduler sur Windows).
+
+
+Exemple d'exécution :
+
+# Exemple d'exécution pour extraire les annonces
+urls <- c("https://www.ebay.fr/sch/i.html?_nkw=chaussures+de+course&_sop=12")
+# Appliquez le scraping et filtrez les annonces
+annonces <- lapply(urls, extract_filtered_data)
+# Combinez les résultats
+resultats <- do.call(rbind, annonces)
+# Envoi d'un email avec les résultats filtrés
+send_email(resultats)
+
+
+
