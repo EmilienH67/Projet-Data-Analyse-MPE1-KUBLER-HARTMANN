@@ -11,7 +11,10 @@
 Paradoxalement, les chaussures sont des biens rapidement usables et fabriquées avec des matières plastiques. Ainsi, une solution économique et écologique sont des sites de reventes comme ebay.fr .
 
 
-Ainsi, nous posons la problématique suivante: **Comment être alerté en temps réel par des annonces écologique et pertinentes postées par des particuliers ?**
+Ainsi, nous posons la problématique suivante:
+
+**Comment être alerté en temps réel par des annonces écologique et pertinentes postées par des particuliers ?**
+
 
 C'est dans ce contexte que s'inscrit notre projet de ce cours. Nous avons construit un prpgramme permettant de notifier un coureur par mail (gmail) lorsque le programme détecte une paire de chaussures correspondants au critères de selections définies au prélable: 
 1) **Le prix** : Nous avons choisit une plage de prix entre 60 et 150 Euros. 
