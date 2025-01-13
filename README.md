@@ -23,8 +23,6 @@ C'est dans ce contexte que s'inscrit notre projet de ce cours. Nous avons constr
 
 
 
-
-
 ## II. Les packages: 
 
 -   **`blastula`** : Création et envoi d'emails avec des options avancées (personnalisation, inclusion d'images, etc.) → notifications par email.
@@ -34,7 +32,47 @@ C'est dans ce contexte que s'inscrit notre projet de ce cours. Nous avons constr
 -   **`cronR`** : Permet de planifier l'exécution de scripts R à des intervalles spécifiques (quotidien, horaire, hebdomadaire, etc.) sans quitter l'environnement R.
 
 
-##III. Utilisation
+## III. Extraction et filtrage des données brutes depuis chaque URL.
+
+1.  Lecture de la page HTML : "read_html(url)"charge le contenu HTML de l'URL.
+2. Extraction des données : "html_nodes()identifie" les sections HTML pertinentes (titres, prix, liens).
+3. Filtrage des données : Les résultats non pertinents contenant "Shop on eBay" sont exclus.
+4. Formatage : Les résultats filtrés sont stockés dans un data frame pour une manipulation facile.
+
+
+## IV. Application de la fonction et combinaison des résultats
+
+-   "lapply()"applique la fonction "extract_filtered_data" à chaque URL de la liste.
+-   Les résultats de chaque URL sont combinés avec "do.call(rbind, ...)", créant une table unique contenant toutes les annonces.
+
+## V. Nettoyage et transformation des données
+
+**Objectif** : Préparer les données pour analyse. - Extraction des prix numériques : Les caractères non numériques sont supprimés. - Remplacement des virgules par des points pour convertir les prix. - Filtrage des prix : Annonces dont le prix est inférieur à 60 EUR ou supérieur à 150 EUR sont exclues. - Sélection des colonnes finales : Seules les colonnes nécessaires (Name, Price, Price_num, Link) sont conservées.
+
+## VI. Création d'un corps de message email et envoi de l'email
+
+**Objectif** : Générer un texte contenant les annonces filtrées. Chaque ligne contient le nom, le prix et un lien cliquable vers l'annonce.
+Détails :
+Chaque ligne contient le nom, le prix et un lien cliquable vers l'annonce.
+Le texte est formaté pour être lisible dans un email.
+
+
+## VII. Création de l'email
+
+compose_email : Crée un email en format HTML à partir du texte préparé.
+Utilisation du Markdown : Le corps de l'email est enrichi en utilisant md() pour intégrer facilement des éléments comme des liens.
+
+
+## VIII. Envoi de l'email
+
+-   Envoi via le serveur SMTP de Gmail.
+-   Paramètres : from, to, subject, et configuration sécurisée des identifiants via "keyrin".
+
+## IX. Automatisation  du code
+
+
+
+## X.Conclusion et usage 
 
 Exécution du script R : Vous pouvez exécuter le script directement depuis RStudio ou en ligne de commande pour démarrer l'extraction des données. Le script se charge de tout : il va extraire les annonces de chaussures de sport sur eBay, les filtrer selon les critères définis, puis envoyer un email à l'adresse spécifiée.
 
@@ -42,19 +80,15 @@ Personnalisation des paramètres :
 
 Changez l'URL dans la liste des URLs pour explorer d'autres pages eBay.
 Mettez à jour la configuration SMTP dans le fichier pour personnaliser les paramètres d'email (comme votre adresse Gmail).
+
 Exécution automatique : Vous pouvez programmer le script pour s'exécuter régulièrement en utilisant un planificateur de tâches sur votre système (par exemple, cron sur Linux ou Task Scheduler sur Windows).
 
+## Contribution
 
-Exemple d'exécution :
-
-# Exemple d'exécution pour extraire les annonces
-urls <- c("https://www.ebay.fr/sch/i.html?_nkw=chaussures+de+course&_sop=12")
-# Appliquez le scraping et filtrez les annonces
-annonces <- lapply(urls, extract_filtered_data)
-# Combinez les résultats
-resultats <- do.call(rbind, annonces)
-# Envoi d'un email avec les résultats filtrés
-send_email(resultats)
+Vous pouvez contribuer à ce projet en soumettant des pull requests, en signalant des bugs ou en proposant de nouvelles fonctionnalités. 
+Toutes les contributions sont les bienvenues notamment pour intégrer Vinted chose que nous n'avons pas réussi à faire...
 
 
-
+## Auteurs
+Emilien Hartmann
+Brice Kubler
