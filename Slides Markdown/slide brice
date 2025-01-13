@@ -119,3 +119,9 @@ cron_add(
 ```
 
 -  Utlisation de la commande *cronR* : scraping du site ebay.fr quotidiennement
+
+---
+
+## X. Conclusion
+
+Il est désormais possible d'executer 
