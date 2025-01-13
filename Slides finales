@@ -52,13 +52,12 @@ knitr::opts_chunk$set(echo = FALSE)
 -   **`keyring`** : Stocker en toute sécurité les informations sensibles comme les identifiants ou mots de passe (ici pour la configuration SMTP Gmail).
 -   **`rvest`** : Facilite l'extraction de données d'un site web (web scraping). Utilisé pour récupérer les informations (nom, prix, lien) depuis les annonces eBay.
 -   **`dplyr`** : Indispensable pour manipuler, nettoyer et transformer les données sous forme de tableaux.
-
+-   **`cronr`** : Le package cronR permet de planifier et d'automatiser l'exécution de scripts R à des intervalles réguliers en utilisant le système de tâches cron.
 ------------------------------------------------------------------------
 
 ## IV. Listing des URL de recherche
 
-\`\`\`r urls \<- c( "<https://www.ebay.fr/sch/i.html?_nkw=chaussures+de+course&_sop=12>" ) \##
-
+Le listing des URL de recherche sert à définir les pages web spécifiques à partir desquelles les données (comme les annonces de chaussures) seront extraites pour le traitement et l'analyse.
 ------------------------------------------------------------------------
 
 ## V Extraire et filtrer les données brutes depuis chaque URL.
@@ -124,10 +123,10 @@ cron_add(
 
 ## X. Conclusion
 
-Il est désormais possible d'exécuter le script directement depuis RStudio ou en ligne de commande pour démarrer l'extraction des données. Le script se charge de tout : il va extraire les annonces de chaussures de sport sur eBay, les filtrer selon les critères définis, puis envoyer un email à l'adresse spécifiée.
+-   Il est désormais possible d'exécuter le script directement depuis RStudio ou en ligne de commande pour démarrer l'extraction des données. Le script se charge de tout : il va extraire les annonces de chaussures de sport sur eBay, les filtrer selon les critères définis, puis envoyer un email à l'adresse spécifiée.
 
-Personnalisation des paramètres :
+Concernant la personnalisation des paramètres :
 
-Changez l'URL dans la liste des URLs pour explorer d'autres pages eBay. Mettez à jour la configuration SMTP dans le fichier pour personnaliser les paramètres d'email (comme votre adresse Gmail).
+-   Changez l'URL dans la liste des URLs pour explorer d'autres pages eBay. Mettez à jour la configuration SMTP dans le fichier pour personnaliser les paramètres d'email (comme votre adresse Gmail).
 
-Exécution automatique : Vous pouvez programmer le script pour s'exécuter régulièrement en utilisant un planificateur de tâches sur votre système (par exemple, cron sur Linux ou Task Scheduler sur Windows).
+-   Exécution automatique : Vous pouvez programmer le script pour s'exécuter régulièrement en utilisant un planificateur de tâches sur votre système (par exemple, cron sur Linux ou Task Scheduler sur Windows).
