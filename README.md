@@ -124,7 +124,7 @@ A noter: Il est aussi possible d'exécuter manuellement le script pour tester so
 
 ## X.Conclusion et usage 
 
-Vous pouvez désormais exécuter le script directement depuis RStudio ou en ligne de commande pour démarrer l'extraction des données. Le script se charge de tout : il va extraire les annonces de chaussures de sport sur eBay, les filtrer selon les critères définis, puis envoyer un email à l'adresse spécifiée.
+Il est désormais possible d'exécuter le script directement depuis RStudio ou en ligne de commande pour démarrer l'extraction des données. Le script se charge de tout : il va extraire les annonces de chaussures de sport sur eBay, les filtrer selon les critères définis, puis envoyer un email à l'adresse spécifiée.
 
 Personnalisation des paramètres :
 
