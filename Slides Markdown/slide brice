@@ -124,4 +124,10 @@ cron_add(
 
 ## X. Conclusion
 
-Il est désormais possible d'executer 
+Il est désormais possible d'exécuter le script directement depuis RStudio ou en ligne de commande pour démarrer l'extraction des données. Le script se charge de tout : il va extraire les annonces de chaussures de sport sur eBay, les filtrer selon les critères définis, puis envoyer un email à l'adresse spécifiée.
+
+Personnalisation des paramètres :
+
+Changez l'URL dans la liste des URLs pour explorer d'autres pages eBay. Mettez à jour la configuration SMTP dans le fichier pour personnaliser les paramètres d'email (comme votre adresse Gmail).
+
+Exécution automatique : Vous pouvez programmer le script pour s'exécuter régulièrement en utilisant un planificateur de tâches sur votre système (par exemple, cron sur Linux ou Task Scheduler sur Windows).
