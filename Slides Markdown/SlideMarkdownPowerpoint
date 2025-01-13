@@ -4,16 +4,13 @@ author: "Emilien Hartmann, Brice Kubler"
 date: "2025-01-13"
 output:
   powerpoint_presentation: default
-  ioslides_presentation: default
-  slidy_presentation: default
-  beamer_presentation: default
 ---
 
 ## I. Contextualisation
 
 -   En 2024, 12,4 millions de Français déclarent courir, ce qui représente 25 % de la population.
 -   La hausse est intégralement portée par les marcheurs ou coureurs réguliers : + 7 points, de 25 % à 32 %.
--   Exemple : Une Nike Alphafly a 310 € ou encore une Asics Gel-Nimbus a 200 € : **les chaussures de running n'ont jamais été aussi chères.**
+-   Exemple : Une Nike Alphafly a 310 € ou encore une Asics Gel-Nimbus a 200 € : les chaussures de running n'ont jamais été aussi chères.\*\*
 -   Paradoxalement : Les chaussures sont des biens rapidement usables et fabriquées avec des matières plastiques.
 -   Solution économique et écologique ? → Site de revente : Vinted, eBay.
 
@@ -52,43 +49,35 @@ output:
 
 ------------------------------------------------------------------------
 
-## V. Exfiltration des données
-- **Objectif** : Extraire et filtrer les données brutes depuis chaque URL.
-- **Détails de l'implémentation :**
-    1. Lecture de la page HTML : `read_html(url)` charge le contenu HTML de l'URL.
-    2. Extraction des données : `html_nodes()` identifie les sections HTML pertinentes (titres, prix, liens).
-    3. Filtrage des données : Les résultats non pertinents contenant "Shop on eBay" sont exclus.
-    4. Formatage : Les résultats filtrés sont stockés dans un `data.frame` pour une manipulation facile.
+## V Extraire et filtrer les données brutes depuis chaque URL.
 
----
+1.  Lecture de la page HTML : "read_html(url)"charge le contenu HTML de l'URL. 2. Extraction des données : "html_nodes()identifie" les sections HTML pertinentes (titres, prix, liens). 3. Filtrage des données : Les résultats non pertinents contenant "Shop on eBay" sont exclus. 4. Formatage : Les résultats filtrés sont stockés dans un data frame pour une manipulation facile.
+
+------------------------------------------------------------------------
 
 ## VI. Application de la fonction et combinaison des résultats
-- `lapply()` applique la fonction `extract_filtered_data` à chaque URL de la liste.
-- Les résultats de chaque URL sont combinés avec `do.call(rbind, ...)`, créant une table unique contenant toutes les annonces.
 
----
+-   "lapply()"applique la fonction "extract_filtered_data" à chaque URL de la liste.
+-   Les résultats de chaque URL sont combinés avec "do.call(rbind, ...)", créant une table unique contenant toutes les annonces.
+
+------------------------------------------------------------------------
 
 ## VII. Nettoyage et transformation des données
-**Objectif** : Préparer les données pour analyse.
-- Extraction des prix numériques : Les caractères non numériques sont supprimés.
-- Remplacement des virgules par des points pour convertir les prix.
-- Filtrage des prix : Annonces dont le prix est inférieur à 60 EUR ou supérieur à 150 EUR sont exclues.
-- Sélection des colonnes finales : Seules les colonnes nécessaires (Name, Price, Price_num, Link) sont conservées.
 
----
+**Objectif** : Préparer les données pour analyse. - Extraction des prix numériques : Les caractères non numériques sont supprimés. - Remplacement des virgules par des points pour convertir les prix. - Filtrage des prix : Annonces dont le prix est inférieur à 60 EUR ou supérieur à 150 EUR sont exclues. - Sélection des colonnes finales : Seules les colonnes nécessaires (Name, Price, Price_num, Link) sont conservées.
+
+------------------------------------------------------------------------
 
 ## VIII. Création d'un corps de message email et envoi de l'email
+
 **Objectif** : Générer un texte contenant les annonces filtrées. Chaque ligne contient le nom, le prix et un lien cliquable vers l'annonce.
 
----
+------------------------------------------------------------------------
 
 ## IX. Envoi de l'email
-- Envoi via le serveur SMTP de Gmail.
-- Paramètres : from, to, subject, et configuration sécurisée des identifiants via `keyring`.
 
----
+-   Envoi via le serveur SMTP de Gmail.
+-   Paramètres : from, to, subject, et configuration sécurisée des identifiants via "keyrin".
 
-## X. Automatisation du code
----
+------------------------------------------------------------------------
 
-## Conclusion
