@@ -99,3 +99,23 @@ knitr::opts_chunk$set(echo = FALSE)
 Envoi via le serveur SMTP de Gmail.<br><br> - Paramètres : **from**), **to**, **subject**, et configuration sécurisée des identifiants via "keyring".
 
 ------------------------------------------------------------------------
+
+
+
+
+## IX. Automatisation du programme
+
+-**Objectif** : Envoie d'une notification contenant les liens, les prix et les modèles des chaussures tourvés sur ebay.fr
+
+-**Fréquence**:  Tous les jours à 8h du matin 
+
+```{r}
+cron_add(
+  command = cmd,
+  frequency = "daily",
+  at = "08:00",
+  id = "chaussures_daily",       # Identifiant unique pour la tâche
+  description = "Mail quotidien des chaussures de course à pied sur ebay"
+```
+
+-  Utlisation de la commande *cronR* : scraping du site ebay.fr quotidiennement
