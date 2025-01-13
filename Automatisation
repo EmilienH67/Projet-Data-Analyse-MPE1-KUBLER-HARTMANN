@@ -1,0 +1,12 @@
+install.packages("cronR")
+library(cronR)
+cmd <- cron_rscript("/Users/derking/Desktop/UniStra/L3/Sem6/Econometrie/data_analysis/Chaussures_prix_taille.R")  # Remplacez par le chemin de votre script
+cron_add(
+  command = cmd,
+  frequency = "daily",
+  at = "08:00",
+  id = "chaussures_daily",       # Identifiant unique pour la tâche
+  description = "Mail quotidien des chaussures de course à pied sur ebay"
+
+cron_ls() 
+source("/Users/derking/Desktop/UniStra/L3/Sem6/Econometrie/data_analysis/Chaussures_prix_taille.R")
