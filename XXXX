@@ -1,0 +1,34 @@
+
+library(ggplot2)
+
+
+p <- ggplot(data, aes(x = nb_citations)) +
+  geom_density(fill = "blue", alpha = 0.3) +
+  theme_minimal() +
+  labs(title = "Distribution des citations",
+       x = "Nombre de citations",
+       y = "Densité") +
+  theme(text = element_text(size = 12))
+
+
+p <- p + geom_vline(aes(xintercept = mean(nb_citations)), 
+                    color = "red", 
+                    linetype = "dashed")
+
+
+print("Statistiques descriptives des citations:")
+print(summary(data$nb_citations))
+
+
+print(p)
+
+
+#--- Answer
+La distribution du nombre de citations présente plusieurs caractéristiques notables :
+Asymétrie forte : La distribution est fortement asymétrique à droite  avec :
+Une médiane de 6 citations
+Une moyenne de 23.29 citations
+L'écart important entre la médiane et la moyenne indique la présence de valeurs extrêmes
+Queue lourde : La distribution présente une longue queue à droite, s'étendant jusqu'à 1454 citations
+Concentration : La majorité des articles reçoivent peu de citations :
+Cette distribution est typique des données bibliométriques, montrant que quelques articles très influents reçoivent un grand nombre de citations, tandis que la majorité des articles reçoivent relativement peu de citations.
